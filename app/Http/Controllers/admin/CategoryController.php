@@ -33,8 +33,8 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $this->model = Category::create($request->all());
-        $directory = "all_category_img/";
-        $this->fileUpload($request->image, $this->model, 'image', $directory);
+        // $directory = "all_category_img/";
+        // $this->fileUpload($request->image, $this->model, 'image', $directory);
 
         return redirect()
             ->route('admin.category.index')

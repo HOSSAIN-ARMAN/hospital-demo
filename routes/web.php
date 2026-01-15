@@ -33,7 +33,9 @@ Route::get('user/home', [HomeController::class, 'user'])->name('user.home');
 //Route binding for admin panel
 require_once __DIR__ . '/admin/dashboard.php';  //for dashboard
 require_once __DIR__ . '/admin/category.php';   //for Category
-
+require_once __DIR__ . '/admin/testItem.php';    
+require_once __DIR__ . '/admin/doctor.php';    
+require_once __DIR__ . '/admin/odpReception.php';    
 
 Route::group(['middleware' => 'is_admin'], function (){
     Route::prefix('order')->group(function (){
@@ -41,3 +43,4 @@ Route::group(['middleware' => 'is_admin'], function (){
         Route::get('/create', [\App\Http\Controllers\admin\OrderController::class, 'create'])->name('admin.order.create');
     });
 });
+
