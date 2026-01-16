@@ -19,10 +19,13 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 COPY . /var/www/html
 
+
+# Copy custom Apache config
+COPY ./docker/apache.conf /etc/apache2/sites-available/000-default.conf
+
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html/storage \
     && chmod -R 755 /var/www/html/bootstrap/cache
 
-EXPOSE 80
 
-CMD ["apache2-foreground"]
+RUN a2enmod rewrite
