@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Role;
 
 class User extends Authenticatable
 {
@@ -16,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'is_admin'
+        'name', 'email', 'password', 'is_controller', 'hospital_id', 'is_woner', 'is_manager', 'is_super_user', 'is_admin', 'is_doctor', 'is_stuff', 'is_user', 'status'
     ];
 
     /**
@@ -36,4 +37,26 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+
+    // public function roles(){
+    //     return $this->belongsToMany(Role::class);
+    // }
+
+    // public function hasPermission($permission)
+    // {
+    //     foreach ($this->roles as $role) {
+    //         if ($role->permissions->contains('name', $permission)) {
+    //             return true;
+    //         }
+    //     }
+    //     return false;
+    // }
+
+    // public function isSuperAdmin()
+    // {
+    //     return $this->hospital_id === null;
+    // }
+
 }

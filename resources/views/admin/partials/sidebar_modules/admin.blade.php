@@ -1,3 +1,97 @@
+<!-- @if(auth()->user()->is_admin == 1) -->
+<li class="">
+    <a href="#" class="dropdown-toggle">
+        <i class="menu-icon fa fa-asterisk"></i>
+        <span class="menu-text">
+                   System-Info
+                </span>
+        <b class="arrow fa fa-angle-down"></b>
+    </a>
+    <b class="arrow"></b>
+    <ul class="submenu">
+        <li class="{{ $routeName === 'admin.order.index' ? 'open' : ''}}">
+            <a href="{{ route('admin.order.index') }}">
+                <i class="menu-icon fa fa-caret-right"></i>
+                System Controller
+            </a>
+            <b class="arrow"></b>
+        </li>
+    </ul>
+    
+    <ul class="submenu">
+        <li class="{{ $routeName === 'admin.category.sub-category.index' ? 'open' : ''}}">
+
+            {{--                    <a href="{{ route('admin.category.sub-category.index') }}">--}}
+            <a href="#">
+                <i class="menu-icon fa fa-caret-right"></i>
+                Manage-System
+            </a>
+            <b class="arrow"></b>
+        </li>
+    </ul>
+</li>
+<!-- @endif -->
+
+
+
+
+<!-- {{--        <li class="{{ strpos($routeName, 'backend.admin') === 0 ? 'active open' : ''}}">--}} -->
+
+@if(auth()->user()->is_controller == 101 && auth()->user()->name == "arman")
+        <li class="">
+            <a href="#" class="dropdown-toggle">
+                <i class="menu-icon fa fa-asterisk"></i>
+                <span class="menu-text">
+                   System-Info
+                </span>
+                <b class="arrow fa fa-angle-down"></b>
+            </a>
+            <b class="arrow"></b>
+            <ul class="submenu">
+                <li class="{{ $routeName === 'admin.category.index' ? 'open' : ''}}">
+                    <a href="{{ route('admin.systemController.create') }}">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        System Controller
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+            </ul>
+
+             <ul class="submenu">
+                <li class="{{ $routeName === 'admin.category.index' ? 'open' : ''}}">
+                    <a href="{{ route('admin.systemController.create') }}">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Hospital list
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+            </ul>
+
+            <ul class="submenu">
+                <li class="{{ $routeName === 'admin.category.index' ? 'open' : ''}}">
+                    <a href="{{ route('admin.systemController.create') }}">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Create Hospital
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+            </ul>
+
+            <ul class="submenu">
+                <li class="{{ $routeName === 'admin.category.sub-category.index' ? 'open' : ''}}">
+
+{{--                    <a href="{{ route('admin.category.sub-category.index') }}">--}}
+                    <a href="#">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                         Manage-System
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+            </ul>
+        </li>
+
+@endif
+
 
 {{--        <li class="{{ strpos($routeName, 'backend.admin') === 0 ? 'active open' : ''}}">--}}
         <li class="">
@@ -72,7 +166,7 @@
 
 
 
-
+@if(auth()->user() && auth()->user()->status == 1)
 
 {{--        <li class="{{ strpos($routeName, 'backend.admin') === 0 ? 'active open' : ''}}">--}}
         <li class="">
@@ -106,7 +200,7 @@
             </ul>
         </li>
 
-
+@endif
 
 
 {{--        <li class="{{ strpos($routeName, 'backend.admin') === 0 ? 'active open' : ''}}">--}}
@@ -143,7 +237,7 @@
 
 
 
-
+@if(auth()->user() && auth()->user()->status == 1)
 
 
        <li class="">
@@ -222,7 +316,7 @@
 					</li>
 
 
-
+@endif
 
 
 

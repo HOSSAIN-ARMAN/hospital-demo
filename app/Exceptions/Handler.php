@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Database\QueryException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -50,6 +51,25 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
+        // create code by arman
+
+        // if($exception instanceof QueryException){
+        //     if(str_contains($exception->getMessage(), 'Base Table Or view Not Found')){
+        //         if ($request->expectsJson()) {
+        //         return response()->json([
+        //             'status' => false,
+        //             'message' => 'System configuration incomplete. Please contact admin.'
+        //         ], 500);
+        //        }
+        //        return response()->view('errors.database', [], 500);
+        //     }
+        // }
+
+        // end
+
         return parent::render($request, $exception);
     }
+
+
+
 }

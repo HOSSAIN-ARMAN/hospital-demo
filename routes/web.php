@@ -23,9 +23,22 @@ Route::get('/', function () {
 
 Auth::routes();
 
+
+
+
 Route::get('/demo', [\App\Http\Controllers\DemoExcelController::class, 'index']);
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::group(['middleware' => 'is_controller'], function(){
+    Route::prefix('control')->group(function(){
+         route::get('/index', [\App\Http\Controllers\SystemController::class, 'index'])->name('admin.systemController.create');
+    });
+});
+
+// route::get('/control/index', [\App\Http\Controllers\SystemController::class, 'index'])->name('admin.systemController.create');
+
 
 Route::get('admin/home', [HomeController::class, 'index'])->name('home')->middleware('is_admin');
 Route::get('user/home', [HomeController::class, 'user'])->name('user.home');
