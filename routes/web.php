@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\System\SystemController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -31,13 +33,22 @@ Route::get('/demo', [\App\Http\Controllers\DemoExcelController::class, 'index'])
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::group(['middleware' => 'is_controller'], function(){
-    Route::prefix('control')->group(function(){
-         route::get('/index', [\App\Http\Controllers\SystemController::class, 'index'])->name('admin.systemController.create');
-    });
-});
+// Route::group(['middleware' => 'is_controller'], function(){
+//     Route::prefix('control')->group(function(){
+//          route::get('/index', [\App\Http\Controllers\SystemController::class, 'index'])->name('admin.systemController.create');
+//     });
+// });
 
-// route::get('/control/index', [\App\Http\Controllers\SystemController::class, 'index'])->name('admin.systemController.create');
+// Route::get('/control/index', [SystemController::class, 'index'])->name('admin.systemController.create');
+// route::post('/control/store', [\App\Http\Controllers\SystemController::class, 'index'])->name('systemController.hospital.store');
+
+// Route::get('control/index', function(){
+//     return view('admin.systemControl.index');
+// })->name('admin.systemController.create');
+
+Route::get('admin/system/index', [SystemController::class, 'index'])->name('admin.system.index');
+Route::get('admin/system/create', [SystemController::class, 'create'])->name('admin.system.create');
+Route::post('admin/system/store', [SystemController::class, 'store'])->name('admin.system.store');
 
 
 Route::get('admin/home', [HomeController::class, 'index'])->name('home')->middleware('is_admin');

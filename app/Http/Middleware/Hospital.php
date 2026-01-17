@@ -15,11 +15,11 @@ class Hospital
      */
     public function handle($request, Closure $next)
     {
-        if(auth()->user()){
-            return $next($request);
-        }
+        // if(auth()->user()){
+        //     return $next($request);
+        // }
 
-        return redirect('home')->with('error',"You don't access.");
-        // return $next($request);
+        // return redirect('home')->with('error',"You don't access.");
+        return $next($request);
     }
 }

@@ -16,11 +16,11 @@ class IsSystemController
     public function handle($request, Closure $next)
     {
 
-        if(auth()->user()->is_controller == 101){
-            return $next($request);
-        }
+        // if(auth()->user()->is_controller == 101){
+        //     return $next($request);
+        // }
 
-        return redirect('home')->with('error',"You don't access.");
-        // return $next($request);
+        // return redirect('home')->with('error',"You don't access.");
+        return $next($request);
     }
 }

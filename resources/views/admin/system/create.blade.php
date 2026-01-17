@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title', 'Create Hospital')
+@section('title', 'Hospital List')
 @section('page-header')
     <i class="fa fa-plus"></i> Create Hospital
 @endsection
@@ -7,8 +7,8 @@
 @section('content')
     @include('admin.components.page_header', [
        'fa' => 'fa fa-list',
-       'name' => 'System Controller',
-       'route' => route('admin.systemController.create')
+       'name' => 'Hospital List',
+       'route' => route('admin.system.index')
     ])
 
     <div class="col-sm-9">
@@ -16,7 +16,7 @@
               method="post"
               class="form-horizontal"
               enctype="multipart/form-data"
-              action="{{route('admin.category.store')}}"
+              action="{{route('admin.system.store')}}"
               >
         @csrf
 
@@ -60,33 +60,46 @@
             </div>
 
             <div class="form-group">
-                <label class="col-sm-2 control-label no-padding-right" for="name">Hospital Name <sup class="red">*</sup></label>
+                <label class="col-sm-2 control-label no-padding-right" for="hospital_name">Hospital Name <sup class="red">*</sup></label>
                 <div class="col-sm-4">
                     <input type="text"
-                           id="name"
+                           id="hospital_name"
                            name="hospital_name"
                            placeholder=""
                            class="form-control"
-                           value="{{old('name')}}">
-                    <strong class="red">{{ $errors->first('name') }}</strong>
+                           value="{{old('hospital_name')}}">
+                    <strong class="red">{{ $errors->first('Hospital Name') }}</strong>
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="col-sm-2 control-label no-padding-right" for="name">Hospital ID <sup class="red">*</sup></label>
+                <label class="col-sm-2 control-label no-padding-right" for="hospital_id">Hospital ID <sup class="red">*</sup></label>
                 <div class="col-sm-4">
                     <input type="text"
-                           id="name"
+                           id="hospital_id"
                            name="hospital_id"
                            placeholder=""
                            class="form-control"
-                           value="{{old('name')}}">
-                    <strong class="red">{{ $errors->first('name') }}</strong>
+                           value="{{old('hospital_id')}}">
+                    <strong class="red">{{ $errors->first('Hospital ID') }}</strong>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label no-padding-right" for="route_no">Route ID <sup class="red">*</sup></label>
+                <div class="col-sm-4">
+                    <input type="text"
+                           id="route_no"
+                           name="route_no"
+                           placeholder=""
+                           class="form-control"
+                           value="{{old('route_no')}}">
+                    <strong class="red">{{ $errors->first('Route ID') }}</strong>
                 </div>
             </div>
 
              <div class="form-group">
-                <label class="col-sm-2 control-label no-padding-right" for="name"> Hospital Woner <sup class="red">*</sup></label>
+                <label class="col-sm-2 control-label no-padding-right" for="is_woner"> Hospital Woner <sup class="red">*</sup></label>
                 <div class="col-sm-4">
                     <input type="radio"
                            id="is_woner"
@@ -101,7 +114,7 @@
             </div>
 
              <div class="form-group">
-                <label class="col-sm-2 control-label no-padding-right" for="name"> Manager <sup class="red">*</sup></label>
+                <label class="col-sm-2 control-label no-padding-right" for="is_manager"> Manager <sup class="red">*</sup></label>
                 <div class="col-sm-4">
                     <input type="radio"
                            id="is_manager"
@@ -118,7 +131,7 @@
             
 
             <div class="form-group">
-                <label class="col-sm-2 control-label no-padding-right" for="name"> Super User <sup class="red">*</sup></label>
+                <label class="col-sm-2 control-label no-padding-right" for="is_super_user"> Super User <sup class="red">*</sup></label>
                 <div class="col-sm-4">
                     <input type="radio"
                            id="is_super_user"
@@ -133,7 +146,7 @@
             </div>
 
              <div class="form-group">
-                <label class="col-sm-2 control-label no-padding-right" for="Admin"> Admin <sup class="red">*</sup></label>
+                <label class="col-sm-2 control-label no-padding-right" for="is_admin"> Admin <sup class="red">*</sup></label>
                 <div class="col-sm-4">
                     <input type="radio"
                            id="is_admin"
@@ -148,7 +161,7 @@
             </div>
 
              <div class="form-group">
-                <label class="col-sm-2 control-label no-padding-right" for="doctor"> Doctor <sup class="red">*</sup></label>
+                <label class="col-sm-2 control-label no-padding-right" for="is_doctor"> Doctor <sup class="red">*</sup></label>
                 <div class="col-sm-4">
                     <input type="radio"
                            id="is_doctor"
@@ -163,7 +176,7 @@
             </div>
 
             <div class="form-group">
-                <label class="col-sm-2 control-label no-padding-right" for="stuff"> Stuff <sup class="red">*</sup></label>
+                <label class="col-sm-2 control-label no-padding-right" for="is_stuff"> Stuff <sup class="red">*</sup></label>
                 <div class="col-sm-4">
                     <input type="radio"
                            id="is_stuff"
@@ -178,7 +191,7 @@
             </div>
 
             <div class="form-group">
-                <label class="col-sm-2 control-label no-padding-right" for="user"> User <sup class="red">*</sup></label>
+                <label class="col-sm-2 control-label no-padding-right" for="is_user"> User <sup class="red">*</sup></label>
                 <div class="col-sm-4">
                     <input type="radio"
                            id="is_user"
@@ -196,11 +209,26 @@
 
             <!-- Image -->
             <div class="form-group">
-                <label class="col-sm-2 control-label no-padding-right" for="image">Image</label>
+                <label class="col-sm-2 control-label no-padding-right" for="image_logo">Logo</label>
                 <div class="col-sm-4">
-                    <input name="image"
+                    <input name="image_logo"
                            type="file"
-                           id="image"
+                           id="image_logo"
+                           class="form-control single-file" accept="image/*">
+                    @error('image_logo')
+                    <strong class="red">{{ $message }}</strong>
+                    <br>
+                    @enderror
+                    <strong class="text-primary">Minimum 100x100 pixels</strong>
+                </div>
+            </div>
+            <!-- Image -->
+            <div class="form-group">
+                <label class="col-sm-2 control-label no-padding-right" for="image_benar">Benar</label>
+                <div class="col-sm-4">
+                    <input name="image_benar"
+                           type="file"
+                           id="image_benar"
                            class="form-control single-file" accept="image/*">
                     @error('image')
                     <strong class="red">{{ $message }}</strong>
@@ -211,7 +239,7 @@
             </div>
             <!--status-->
             <div class="form-group">
-                <label class="col-sm-2 control-label no-padding-right" for="name">Status <sup class="red">*</sup></label>
+                <label class="col-sm-2 control-label no-padding-right" for="status">Status <sup class="red">*</sup></label>
                 <div class="col-sm-4">
                     <input type="radio"
                            id="status"

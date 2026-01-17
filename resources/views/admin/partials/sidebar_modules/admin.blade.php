@@ -37,7 +37,7 @@
 
 <!-- {{--        <li class="{{ strpos($routeName, 'backend.admin') === 0 ? 'active open' : ''}}">--}} -->
 
-@if(auth()->user()->is_controller == 101 && auth()->user()->name == "arman")
+<!-- @if(auth()->user()->is_controller == 101 && auth()->user()->name == "arman") -->
         <li class="">
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-asterisk"></i>
@@ -49,7 +49,7 @@
             <b class="arrow"></b>
             <ul class="submenu">
                 <li class="{{ $routeName === 'admin.category.index' ? 'open' : ''}}">
-                    <a href="{{ route('admin.systemController.create') }}">
+                    <a href="">
                         <i class="menu-icon fa fa-caret-right"></i>
                         System Controller
                     </a>
@@ -59,7 +59,7 @@
 
              <ul class="submenu">
                 <li class="{{ $routeName === 'admin.category.index' ? 'open' : ''}}">
-                    <a href="{{ route('admin.systemController.create') }}">
+                    <a href="{{ route('admin.system.index') }}">
                         <i class="menu-icon fa fa-caret-right"></i>
                         Hospital list
                     </a>
@@ -69,7 +69,8 @@
 
             <ul class="submenu">
                 <li class="{{ $routeName === 'admin.category.index' ? 'open' : ''}}">
-                    <a href="{{ route('admin.systemController.create') }}">
+                    <a href="">
+                    
                         <i class="menu-icon fa fa-caret-right"></i>
                         Create Hospital
                     </a>
@@ -90,7 +91,7 @@
             </ul>
         </li>
 
-@endif
+<!-- @endif -->
 
 
 {{--        <li class="{{ strpos($routeName, 'backend.admin') === 0 ? 'active open' : ''}}">--}}
@@ -129,7 +130,7 @@
 
 
 
-{{--Oder mamo--}}
+<!-- {{--Oder mamo--}} -->
 
 <!-- @if(auth()->user()->is_admin == 1) -->
 <li class="">
@@ -166,7 +167,7 @@
 
 
 
-@if(auth()->user() && auth()->user()->status == 1)
+<!-- @if(auth()->user() && auth()->user()->status == 1) -->
 
 {{--        <li class="{{ strpos($routeName, 'backend.admin') === 0 ? 'active open' : ''}}">--}}
         <li class="">
@@ -200,7 +201,7 @@
             </ul>
         </li>
 
-@endif
+<!-- @endif -->
 
 
 {{--        <li class="{{ strpos($routeName, 'backend.admin') === 0 ? 'active open' : ''}}">--}}
@@ -237,7 +238,7 @@
 
 
 
-@if(auth()->user() && auth()->user()->status == 1)
+<!-- @if(auth()->user() && auth()->user()->status == 1) -->
 
 
        <li class="">
@@ -316,7 +317,7 @@
 					</li>
 
 
-@endif
+<!-- @endif -->
 
 
 
